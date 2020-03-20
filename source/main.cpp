@@ -14,7 +14,7 @@ int raw_feature_get_data(size_t offset, size_t length, float *out_ptr) {
 int main() {
     printf("Edge Impulse standalone inferencing (Mbed)\n");
 
-    ei_impulse_result_t result;
+    ei_impulse_result_t result = { 0 };
 
     // the features are stored into flash, and we don't want to load everything into RAM
     signal_t features_signal;
