@@ -61,6 +61,10 @@ void ei_printf_float(float f) {
 int main() {
     printf("Edge Impulse standalone inferencing (Mbed)\n");
 
+    printf("Configuration:\n");
+    printf("DSP feature size: %d\n", EI_CLASSIFIER_NN_INPUT_FRAME_SIZE);
+    printf("Compiled: %d\n", EI_CLASSIFIER_COMPILED);
+
     if (sizeof(dsp_features) / sizeof(float) != EI_CLASSIFIER_NN_INPUT_FRAME_SIZE) {
         printf("The size of your 'dsp_features' array is not correct. Expected %d items, but had %u\n",
             EI_CLASSIFIER_NN_INPUT_FRAME_SIZE, sizeof(dsp_features) / sizeof(float));
@@ -69,7 +73,12 @@ int main() {
 
     ei::matrix_t dsp_matrix(sizeof(dsp_features) / sizeof(dsp_features[0]), 1, (float*)dsp_features);
 
+    printf("Initial memory usage:\n");
+    print_memory_info();
+    printf("\n\n");
+
     while (1) {
+        printf("Running inference\n");
         ei_impulse_result_t result = { 0 };
 
         EI_IMPULSE_ERROR r = run_inference(&dsp_matrix, &result);
@@ -91,6 +100,9 @@ int main() {
             }
         }
         printf("]\n");
+
+        print_memory_info();
+        printf("\n");
 
         ThisThread::sleep_for(2000);
     }
