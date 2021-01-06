@@ -4,7 +4,7 @@
 
 #define MODE_F32        1
 #define MODE_I16        2
-#define INFERENCE_MODE  MODE_F32
+#define INFERENCE_MODE  MODE_I16
 
 
 static const float features[] = {
