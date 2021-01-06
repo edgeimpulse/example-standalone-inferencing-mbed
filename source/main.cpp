@@ -4,7 +4,7 @@
 
 #define MODE_F32        1
 #define MODE_I16        2
-#define INFERENCE_MODE  MODE_I16
+#define INFERENCE_MODE  MODE_F32
 
 
 static const float features[] = {
@@ -15,7 +15,7 @@ static const float features[] = {
 int raw_feature_get_data(size_t offset, size_t length, int16_t *out_ptr) {
     for (size_t ix = 0; ix < length; ix++) {
         float v = features[offset + ix];
-        float scaled_float = v / 19.62f;
+        float scaled_float = v / 19.62;
         arm_float_to_q15(&scaled_float, (q15_t *)&out_ptr[ix], 1);
     }
     return 0;
