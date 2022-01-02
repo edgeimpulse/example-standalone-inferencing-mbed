@@ -3,7 +3,7 @@
         "*": {
             "platform.stdio-baud-rate" : 115200,
             "platform.stdio-convert-newlines": true,
-            "rtos.main-thread-stack-size": "(8*1024)",
+            "rtos.main-thread-stack-size": "(4*1024)",
             "target.printf_lib": "std"
         }
     }
