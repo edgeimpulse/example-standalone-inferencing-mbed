@@ -1,0 +1,7 @@
+#include "model_metadata.h"
+
+#define BENCHMARK_BASELINE 0
+#define BENCHMARK_TFLITE_INT8 1
+#define BENCHMARK_TFLITE_FLOAT32 2
+#define BENCHMARK_EON_INT8 3
+#define BENCHMARK_EON_FLOAT32 4

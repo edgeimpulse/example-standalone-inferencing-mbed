@@ -1,10 +1,16 @@
 {
+    "requires": ["bare-metal"],
     "target_overrides": {
         "*": {
             "platform.stdio-baud-rate" : 115200,
             "platform.stdio-convert-newlines": true,
-            "rtos.main-thread-stack-size": "(8*1024)",
-            "target.printf_lib": "std"
+            "target.c_lib": "small"
         }
-    }
+    },
+    "macros": [
+        "MBED_HEAP_STATS_ENABLED=1",
+        "MBED_MEM_TRACING_ENABLED=1",
+        "ARM_MATH_LOOPUNROLL",
+        "MBED_ROM_SIZE=0x4000000"
+    ]
 }
