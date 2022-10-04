@@ -122,7 +122,10 @@ int main() {
         printf("Running inference\n");
         ei_impulse_result_t result = { 0 };
 
-        EI_IMPULSE_ERROR r = run_inference(&dsp_matrix, &result);
+        static_assert(ei_dsp_blocks_size == 0, "Expected 'ei_dsp_blocks_size' to be 0, otherwise you'll get incorrect benchmark numbers");
+
+        const ei_impulse_t impulse = ei_construct_impulse();
+        EI_IMPULSE_ERROR r = run_inference(&impulse, &dsp_matrix, &result);
         if (r != EI_IMPULSE_OK) {
             printf("Failed to run impulse (%d)\n", r);
             ThisThread::sleep_for(2000);
