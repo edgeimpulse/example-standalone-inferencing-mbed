@@ -107,10 +107,15 @@ typedef struct {
     const char * filter_type;
     float filter_cutoff;
     int filter_order;
+    const char * analysis_type;
     int fft_length;
     int spectral_peaks_count;
     float spectral_peaks_threshold;
     const char * spectral_power_edges;
+    bool do_log;
+    bool do_fft_overlap;
+    int wavelet_level;
+    const char * wavelet;
 } ei_dsp_config_spectral_analysis_t;
 
 typedef struct {
